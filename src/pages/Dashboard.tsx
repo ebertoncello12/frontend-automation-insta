@@ -10,6 +10,8 @@ export const Dashboard: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [analytics, setAnalytics] = useState<any | null>(null);
   const [isLoadingAnalytics, setIsLoadingAnalytics] = useState(true);
+  
+  console.log(analytics)
 
   useEffect(() => {
     fetchAnalytics();
@@ -17,19 +19,20 @@ export const Dashboard: React.FC = () => {
 
   const fetchAnalytics = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/instagram/analytics', {
+      const response = await fetch('http://localhost:3000/api/instagram/followers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: 'math_diogo',
+          username: 'fiestinha_69',
           password: 'Mm77243264',
-          target_profile: 'math_diogo',
+          targetProfile: 'fiestinha_69',
         }),
       });
-  
+      
       if (!response.ok) throw new Error('Failed to fetch analytics');
+      
       
       const data = await response.json();
       setAnalytics(data); // Se o POST for bem-sucedido, armazene os dados na variável analytics
@@ -73,33 +76,10 @@ export const Dashboard: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: 'dixx.enzzinhoo',
-          password: 'Enzzolegal12#',
-          target_profile: 'dixx.enzzinhoo',
-          followers:[
-            "vitoriapassosss",
-            "gilbertochaves96",
-            "dixx.glorinha_",
-            "salve.bel_parameninas13",
-            "dixx.lindinha76",
-            "tatimoreirapsi",
-            "8.cd0",
-            "livia.snts",
-            "_cesarsilvagoes",
-            "euu_sabrinaaa",
-            "nayelicastro058",
-            "2541.rebecca",
-            "man102868",
-            "memessssssdusightj7k",
-            "tatianajofredoss",
-            "diix.da.silvaa",
-            "munhozz06.2",
-            "dix.mascotte",
-            "luizfilipi12",
-            "dasativado.015",
-            "awolkers_",
-            "jooh_amoriim"
-          ]
+          username: 'fiestinha_69',
+          password: 'Mm77243264',
+          target_profile: 'fiestinha_69',
+          followers: analytics.followers
         }),
       });
       
